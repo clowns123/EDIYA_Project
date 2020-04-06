@@ -99,6 +99,12 @@ a {
     height: 100vh;
     padding-top: 60px;
     color: #fff;
+    /*애니메이션*/
+    transform: translateX(100%);
+    transition: all 1s linear;
+}
+.isAct .menuNav{
+    transform: none;
 }
 
 .menu__close {
