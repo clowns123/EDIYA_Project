@@ -1,11 +1,11 @@
 var header = document.querySelector('.header');
-var menuNav = header.querySelector('.menuNav');
-var openButton = header.querySelector('.menu__open');
-var closeButton = header.querySelector('.menu__close');
+var menuNav = document.querySelector('.menuNav');
+var openButton = document.querySelector('.menu__open');
+var closeButton = document.querySelector('.menu__close');
 
-function openClick(){
-
-}
-function closeClick(){
-    
-}
+openButton.addEventListener('click', function(e){
+    header.setAttribute('class', 'isAct');
+});
+closeButton.addEventListener('click', function(e){
+    header.removeAttribute('class', 'isAct');
+});

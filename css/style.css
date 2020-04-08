@@ -92,7 +92,7 @@ a {
 /* nav */
 .menuNav {
     background-color:rgba(20, 24, 44, 0.9);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -102,6 +102,7 @@ a {
     /*애니메이션*/
     transform: translateX(100%);
     transition: all 1s linear;
+    
 }
 .isAct .menuNav{
     transform: none;
