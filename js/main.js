@@ -2,9 +2,10 @@ window.onload = function(){
     var menuOpen = document.querySelector('.menu__open');
     var menuClose = document.querySelector('.menu__close');
     var menuNav = document.getElementById('menuNav');
-    var drink__dialog = document.querySelectorAll('.drink__dialog');
     var drink__item = document.querySelectorAll('.drink__item');
     var drink__close = document.querySelectorAll('.drink__close');
+    var menu__item = document.querySelector('.menu__item')
+    var menu__list = document.querySelector('.menu__list')
 
     // 메뉴 슬라이드
     menuOpen.addEventListener('click', function (e) {
@@ -12,6 +13,12 @@ window.onload = function(){
     })
     menuClose.addEventListener('click', function (e) {
         menuNav.classList.remove('isAct');
+    })
+    menuClose.addEventListener('keydown', e => {
+        if(e.keyCode === 9){
+            e.preventDefault();
+            menu__list.children[0].children[0].focus();
+        } 
     })
     
     for (var a of drink__item){
