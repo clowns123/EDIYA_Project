@@ -62,14 +62,23 @@ a {
 /* common layout */
 
 /* header */
+
+@keyframes moveHeader{
+    0% {transform:translateY(-100%);}
+    100% {transform:translateY(0);}
+}
 .header {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     background-color: rgba(255,255,255,0.4);
     border-bottom: 1px solid #e0e0e0;
+    transform: translateY(-100%);
+    height: 80px;
+    animation: moveHeader .6s ease-out .2s 1 forwards;
 }
 .logo {
     font-size: 0;
@@ -82,7 +91,12 @@ a {
     width: 66px;
     height: 78px;
     background-color: #fff;
+    transition: all .4s; 
 }
+.menu__open:hover {
+    background-color: #eee;
+}
+
 .burger__bar {
     display: block;
     height: 4px;
@@ -94,18 +108,18 @@ a {
     background-color:rgba(20, 24, 44, 0.9);
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
+    left: 100%;
+    width: 100%;
     height: 100vh;
     padding-top: 60px;
     color: #fff;
-    /*애니메이션*/
-    transform: translateX(100%);
-    transition: all 1s linear;
+    transition: all 1s;
+    visibility: hidden;
     
 }
-.isAct .menuNav{
-    transform: none;
+.menuNav.isAct {
+    transform: translate(-100%,0);
+    visibility: initial;
 }
 
 .menu__close {
@@ -118,10 +132,15 @@ a {
 
 .x__bar {
     background-color: #fff;
-    width: 26px;
+    width: 20px;
     height: 2px;
     right: 25%;
     position: absolute;
+    transition: all .3s;
+}
+.menu__close:hover .x__bar{
+    width: 25px;
+    
 }
 
 .bar__left {
@@ -131,25 +150,159 @@ a {
 .bar__right {
     transform: rotate(-45deg);
 }
-
+.menu__item:hover {
+    background-color: #50488d;
+}
 .menu__item a {
     display: block;
     padding: 1em;
     border-bottom: .5px solid rgba(245, 244, 251, 0.3);
 }
-/* main */
-main {
-    background-color: tomato;
-    height: 100vh;
+/* drink-menu */
+
+.drink__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
 }
+.drink__close .x__bar {
+    width: 15px;
+    height: 1px;
+    left: 40%;
+    background-color: #181818;
+}
+
+.drink__menu {
+    margin-bottom: 30px;
+}
+.drink__list {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+}
+.drink__item {
+    width: 100%;
+    background-color: #f5f5f5;
+    text-align: center;
+    position: relative;
+    
+}
+
+.drink__item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.drink__item:hover .drink__figure img{
+    transform: scale(1.1);
+}
+
+.drink__figure {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.drink__figure a {
+    display: block;
+}
+
+.drink__figure img {
+    width: 100%;
+    min-width: 104px;
+    max-width: 190px;
+    transition: all .3s;
+}
+
+.drink__figure figcaption {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* drink-info */
+.drink__dialog {
+    width: 100%;
+    height: 100%;
+    color: #202022;
+    text-align: left;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, .6);
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.dialog__heading {
+    padding: 30px;
+}
+.drink__dialog h3 {
+    font-size: 1.1em;
+    font-weight: 400;
+    line-height: 1.2;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #181818;
+}
+.drink__dialog .enTitle {
+    display: block;
+    color: #999;
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+
+/* drink-table */
+.drink__table, .drink__table dd {
+    margin: 0;
+    text-indent: 15px;
+}
+.drink__table {
+    background-color: #f8f8f8;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 40px ;
+    display: grid;
+    grid-template-rows: repeat(3, 2em);
+    grid-template-columns: repeat(4, 25%);
+    align-items: center;
+    font-size: 1.3rem;
+    position: absolute;
+    bottom: 0;
+}
+
+.drink__table::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 70px;
+    background-color: #ccc;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
 @media screen and (max-width: 559px){
-    .drink__list {
-        
+    .drink__item {
+        margin: 25px 30px 0 30px;
     }
 }
 
 @media screen and (min-width: 560px){
-    .drink__list{
-
+    .drink__menu {
+        margin-left: 15px;
+        margin-right: 15px;
     }
+    .drink__list{
+        width: 100%;
+        max-width: 880px;
+    }
+    .drink__item {
+        flex : 1 1 40%;
+        max-width: 480px;
+        margin: 20px 10px 0;
+    }
+
 }

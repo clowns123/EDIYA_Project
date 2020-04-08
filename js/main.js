@@ -1,11 +1,20 @@
-var header = document.querySelector('.header');
-var menuNav = document.querySelector('.menuNav');
-var openButton = document.querySelector('.menu__open');
-var closeButton = document.querySelector('.menu__close');
+window.onload = function(){
+    var menuOpen = document.querySelector('.menu__open');
+    var menuClose = document.querySelector('.menu__close');
+    var menuNav = document.getElementById('menuNav');
+    var drink = document.querySelectorAll('.drink__dialog');
 
-openButton.addEventListener('click', function(e){
-    header.setAttribute('class', 'isAct');
-});
-closeButton.addEventListener('click', function(e){
-    header.removeAttribute('class', 'isAct');
-});
+    // 메뉴 슬라이드
+    menuOpen.addEventListener('click', function (e) {
+        menuNav.classList.add('isAct');
+    })
+    menuClose.addEventListener('click', function (e) {
+        menuNav.classList.remove('isAct');
+    })
+
+    // 확인용
+    // for (var i = 0; i < drink.length; i++) {
+    //     drink[i].hidden = false;
+    // }
+
+}
